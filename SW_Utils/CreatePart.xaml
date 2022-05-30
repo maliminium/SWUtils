@@ -15,6 +15,6 @@
         <local:EditorDirectory ControlChanged="editor_PathChanged" x:Name="edDir"/>
         <local:EditorTemplate ControlChanged="editor_ControlChanged" TemplateType="Part" x:Name="edTemplate"/>
         <local:EditorMaterial ControlChanged="editor_ControlChanged" x:Name="edMaterial"/>
-        <CheckBox Content="Has .STL Conjugate?" x:Name="cbSTL"/>
+        <CheckBox Content="Has .STL Twin?" x:Name="cbSTL"/>
     </StackPanel>
 </local:DocumentAction>
