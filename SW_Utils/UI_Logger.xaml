@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="SW_Utils.UI_Logger"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SW_Utils"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <RichTextBox Grid.Row="0" VerticalScrollBarVisibility="Auto" x:Name="rtbLog"/>
+        <Button Grid.Row="1" Content="Clear" x:Name="btnClear" Click="btnClear_Click"/>
+    </Grid>
+</UserControl>

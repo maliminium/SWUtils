@@ -1,0 +1,23 @@
+﻿<local:PropertyEditor x:Class="SW_Utils.EditorText"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SW_Utils"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="300" MinWidth="250">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="65"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0" x:Name="colExt"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" VerticalAlignment="Center" x:Name="txtLabel" Text="Name"/>
+        <DockPanel Grid.Column="1" >
+            <TextBlock x:Name="txtNumber"/>
+            <TextBlock x:Name="txtSeperator"/>
+            <TextBox Margin="0,1,0,1" VerticalContentAlignment="Center" x:Name="txtValue" GotFocus="txtValue_GotFocus" LostFocus="txtValue_LostFocus" PreviewKeyDown="txtValue_PreviewKeyDown"/>
+        </DockPanel>        
+        <TextBlock Grid.Column="2" VerticalAlignment="Center" x:Name="txtExtension"/>
+    </Grid>
+</local:PropertyEditor>

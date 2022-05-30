@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="SW_Utils.MainAddInUI"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SW_Utils"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="300" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <!--<RowDefinition Height="Auto"/>-->
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TabControl Grid.Row="0" x:Name="tcMain">
+            <TabItem Header="File/Folder">
+                <local:UI_FileFolder/>
+            </TabItem>
+            <!--<TabItem Header="Notes">
+                <local:UI_Notes/>
+            </TabItem>-->
+            <!--<TabItem Header="Properties">
+                <local:UI_Properties/>
+            </TabItem>-->
+            <!--<TabItem Header="Check">
+                <local:UI_Check/>
+            </TabItem>
+            <TabItem Header="Design Table">
+                <local:UI_DesignTable/>
+            </TabItem>-->
+            <TabItem Header="Dummy">
+                <StackPanel>
+                    <TextBlock Text="Project" Margin="0 2 0 5"/>
+                    <local:EditorText x:Name="edProjCt" Title="Count:" Value="3"/>
+                    <local:EditorText x:Name="edProjDigits" Title="Count:" Value="3"/>
+                    <local:EditorText x:Name="edProjSep" Title="Sep:" IsTextValidationActive="False" Value="P"/>
+                    <local:EditorText x:Name="edSepBtw" Title="Sep btw:" IsTextValidationActive="False" Value="-" Margin="0 5 0 5"/>
+                    <TextBlock Text="Documents" Margin="0 2 0 5"/>
+                    <local:EditorText x:Name="edDocCt" Title="Count:" Value="3"/>
+                    <local:EditorText x:Name="edDocDigits" Title="Count:" Value="5"/>
+                    <local:EditorText x:Name="edDocSep" Title="Sep:" IsTextValidationActive="False" Value="-"/>
+                    <local:EditorText x:Name="edSuffixSep" Title="Suffix Sep:" IsTextValidationActive="False" Value="-" Margin="0 5 0 5"/>
+                    <Button Content="Dummy" x:Name="btnDummy" Click="btnDummy_Click"/>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+        <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        <local:UI_Logger Grid.Row="2"/>
+    </Grid>
+</UserControl>

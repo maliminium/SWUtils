@@ -1,0 +1,24 @@
+﻿<local:PropertyEditor x:Class="SW_Utils.PickerDirectory"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SW_Utils"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="55"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="44"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <ContextMenu x:Key="ctxMenu" >
+                <Button x:Name="btnOpenFolder" Content="Open Folder" Click="btnOpenFolder_Click"/>
+            </ContextMenu>
+        </Grid.Resources>
+        <TextBlock Grid.Column="0" VerticalAlignment="Center" x:Name="txtTitle" Text="Title" MouseLeftButtonDown="txtTitle_MouseLeftButtonDown" ContextMenu="{StaticResource ctxMenu}"/>
+        <ComboBox Grid.Column="1" VerticalAlignment="Center" IsEditable="True" Margin="2 3 2 3" x:Name="cmbValue" IsReadOnly="True" SelectionChanged="cmbValue_SelectionChanged" PreviewMouseDoubleClick="cmbValue_PreviewMouseDoubleClick" DropDownClosed="cmbValue_DropDownClosed" ContextMenu="{StaticResource ctxMenu}"/>
+        <Button Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="40" x:Name="btnSub" Content="Sub" Click="btnSub_Click"/>
+    </Grid>
+</local:PropertyEditor>

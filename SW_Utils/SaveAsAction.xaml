@@ -1,0 +1,30 @@
+﻿<local:DocumentAction x:Class="SW_Utils.SaveAsAction"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SW_Utils"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <TreeViewItem.Header>
+        <CheckBox Content="Save As" IsChecked="True" x:Name="cbAction"/>
+    </TreeViewItem.Header>
+
+    <StackPanel x:Name="stpDetails">
+        <local:EditorDirectory Margin="0 2 0 2" x:Name="edTargetDir" ControlChanged="edTargetDir_ControlChanged"/>
+        <DataGrid CanUserAddRows="False" AutoGenerateColumns="False" x:Name="dtgSaveAsItems">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Original">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding TargetName}" ToolTip="{Binding TargetPath_PaG}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <!--<DataGridTextColumn Header="Original" Binding="{Binding OriginalPath}" IsReadOnly="True"/>-->
+                <DataGridTextColumn Header="Save As" Binding="{Binding TargetPath_Sas}" IsReadOnly="False"/>
+                <DataGridTextColumn Header="DXF" Binding="{Binding TargetPath_DXF}" IsReadOnly="False"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</local:DocumentAction>

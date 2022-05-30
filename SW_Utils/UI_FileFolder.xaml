@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="SW_Utils.UI_FileFolder"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SW_Utils" xmlns:system="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="320">
+    <Grid>
+        <Grid.Resources>
+            <system:Double x:Key="TextWidth">55</system:Double>
+            <system:Double x:Key="ButtonWidth">40</system:Double>
+            <system:Double x:Key="FolderCmbWidth">275</system:Double>
+            <system:Double x:Key="TemplateCmbWidth">100</system:Double>
+            <system:Double x:Key="ComboHeight">18</system:Double>
+            <Thickness x:Key="ButonMargin">1 1 1 1</Thickness>
+            <SolidColorBrush x:Key="Alt_Background" Color="White"></SolidColorBrush>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        
+        <Border Background="LightGray" Opacity="0.3" Grid.Row="0" Grid.RowSpan="5"/>
+
+        <local:DirectoryEditor Grid.Row="0" HorizontalAlignment="Stretch" x:Name="deDirectories" NewPathRequested="deDirectories_NewPathRequested" DirectoryChanged="deDirectories_DirectoryChanged"/>
+
+        <StackPanel Grid.Row="1">
+            <StackPanel Orientation="Horizontal" x:Name="stpAssemblyButtons">
+                <TextBlock Width="{StaticResource TextWidth}" VerticalAlignment="Center" Text="Assembly"/>
+                <Button Width="{StaticResource ButtonWidth}" VerticalAlignment="Center" Margin="{StaticResource ButonMargin}" x:Name="btnAssemFromSolid" Content="From" Click="btnAssemFromSolid_Click"/>
+                <Button Width="{StaticResource ButtonWidth}" VerticalAlignment="Center" Margin="{StaticResource ButonMargin}" x:Name="btnAssemIntoAssem" Content="Into" Click="btnAssemIntoAssem_Click"/>
+                <Button Width="{StaticResource ButtonWidth}" VerticalAlignment="Center" Margin="{StaticResource ButonMargin}" x:Name="btnAssemNew" Content="New" Click="btnAssemNew_Click"/>
+                <Button Width="{StaticResource ButtonWidth}" VerticalAlignment="Center" Margin="{StaticResource ButonMargin}" x:Name="btnAssemClone" Content="Clone" Click="btnAssemClone_Click"/>
+                <Button Width="{StaticResource ButtonWidth}" VerticalAlignment="Center" Margin="{StaticResource ButonMargin}" x:Name="btnAssemNext" Content="Next" Click="btnAssemNext_Click" Background="{StaticResource Alt_Background}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" x:Name="stpPartButtons">
+                <TextBlock Width="{StaticResource TextWidth}" VerticalAlignment="Center" Text="Part"/>
+                <Button Width="{StaticResource ButtonWidth}" VerticalAlignment="Center" Margin="{StaticResource ButonMargin}" x:Name="btnPartFromPart" Content="From" Click="btnPartFromPart_Click"/>
+                <Button Width="{StaticResource ButtonWidth}" VerticalAlignment="Center" Margin="{StaticResource ButonMargin}" x:Name="btnPartIntoSolid" Content="Into" Click="btnPartIntoSolid_Click"/>
+                <Button Width="{StaticResource ButtonWidth}" VerticalAlignment="Center" Margin="{StaticResource ButonMargin}" x:Name="btnPartNew" Content="New" Click="btnPartNew_Click"/>
+                <Button Width="{StaticResource ButtonWidth}" VerticalAlignment="Center" Margin="{StaticResource ButonMargin}" x:Name="btnPartClone" Content="Clone" Click="btnPartClone_Click"/>
+                <Button Width="{StaticResource ButtonWidth}" VerticalAlignment="Center" Margin="{StaticResource ButonMargin}" x:Name="btnPartNext" Content="Next" Click="btnPartNext_Click" Background="{StaticResource Alt_Background}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" x:Name="stpDrawingButtons">
+                <TextBlock Width="{StaticResource TextWidth}" VerticalAlignment="Center" Text="Drawing"/>
+                <Button Width="{StaticResource ButtonWidth}" VerticalAlignment="Center" Margin="{StaticResource ButonMargin}" x:Name="btnDrawingFromSolid" Content="From" Click="btnDrawingFromSolid_Click"/>
+                <Border Width="{StaticResource ButtonWidth}" VerticalAlignment="Center" Margin="{StaticResource ButonMargin}" x:Name="borDrawingSpacer"/>
+                <Button Width="{StaticResource ButtonWidth}" VerticalAlignment="Center" Margin="{StaticResource ButonMargin}" x:Name="btnDrawingNew" Content="New" Click="btnDrawingNew_Click"/>
+                <Button Width="{StaticResource ButtonWidth}" VerticalAlignment="Center" Margin="{StaticResource ButonMargin}" x:Name="btnDrawingClone" Content="Clone" Click="btnDrawingClone_Click"/>
+                <Button Width="{StaticResource ButtonWidth}" VerticalAlignment="Center" Margin="{StaticResource ButonMargin}" x:Name="btnDrawingNext" Content="Next" Click="btnDrawingNext_Click" Background="{StaticResource Alt_Background}"/>
+            </StackPanel>
+            <CheckBox Content=".STL Twin?" x:Name="cbHasSTLConjugate" Margin="0 6 0 0" Checked="cbHasSTLConjugate_Checked" Unchecked="cbHasSTLConjugate_Unchecked"/>
+            <!--<Grid Margin="0 5 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                --><!--<RadioButton Grid.Column="0" x:Name="rbProject" Content="Project" Checked="rbProject_Checked" IsChecked="True"/>
+                    <RadioButton Grid.Column="1" x:Name="rbToolbox" Content="Toolbox" Checked="rbToolbox_Checked"/>
+                    <RadioButton Grid.Column="2" x:Name="rb3DPrint" Content="3DPrint" Checked="rb3DPrint_Checked"/>--><!--
+            </Grid>-->
+        </StackPanel>
+
+        <TreeView Grid.Row="2" x:Name="trvActions" MinHeight="100"/>
+
+        <Button Grid.Row="3" Margin="0 2 0 2" x:Name="btnCreate" Content="Create" Click="btnCreate_Click"/>
+        
+    </Grid>
+</UserControl>

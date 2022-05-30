@@ -1,0 +1,27 @@
+﻿<TreeViewItem x:Class="SW_Utils.ComponentItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SW_Utils"
+             mc:Ignorable="d" 
+             d:DesignHeight="22" d:DesignWidth="500" IsExpanded="True" KeyDown="TreeViewItem_KeyDown">
+    <TreeViewItem.Header>
+        <DockPanel LastChildFill="True" x:Name="dpItem">
+            <CheckBox IsChecked="True" VerticalContentAlignment="Center" x:Name="cbIsActive" Checked="cbIsActive_Checked" Unchecked="cbIsActive_Unchecked"/>
+            <Button Content="X" Background="Red" FontSize="8" Height="15" Width="15" x:Name="btnCancel" Click="btnCancel_Click"/>
+            <TextBlock VerticalAlignment="Center" Margin="2 1 0 1" x:Name="txtTargetNo" Text="TargetNo" MouseLeftButtonDown="txtTarget_MouseLeftButtonDown"/>
+            <Button Content="x" Margin="0 0 5 0" FontSize="4" VerticalAlignment="Top" Height="10" Width="10" x:Name="btnDeleteNo" Click="btnDeleteNo_Click"/>
+            
+            <TextBlock VerticalAlignment="Center" x:Name="txtSepText" Text="{x:Static local:AddInSettings.SEP_TEXT}" MouseLeftButtonDown="txtTarget_MouseLeftButtonDown"/>
+            <TextBox x:Name="txtTargetText" Text="Name_text" Margin="0 1 0 1" MouseDown="txtTarget_MouseLeftButtonDown" KeyDown="txtTargetText_KeyDown" />
+            <Button Content="x" Margin="0 0 5 0" FontSize="4" VerticalAlignment="Top" Height="10" Width="10" x:Name="btnDeleteText" Click="btnDeleteText_Click"/>
+            <TextBlock VerticalAlignment="Center" x:Name="txtExtText" Text=".EXT" MouseLeftButtonDown="txtTarget_MouseLeftButtonDown"/>
+            <local:EditorDirectory Margin="5 1 0 1" x:Name="edTargetDir"/>
+            
+            <TextBlock VerticalAlignment="Center" x:Name="txtSourcePfx" Margin="4 1 0 1" Text="(" FontStyle="Italic" FontSize="8"/>
+            <TextBlock VerticalAlignment="Center" x:Name="txtSource" Margin="2 1 0 1" Text="SourceName" FontStyle="Italic" FontSize="8"/>
+            <TextBlock VerticalAlignment="Center" x:Name="txtSourceSfx" Margin="2 1 0 1" Text=")" FontStyle="Italic" FontSize="8"/>
+        </DockPanel>
+    </TreeViewItem.Header>
+</TreeViewItem>

@@ -1,0 +1,18 @@
+﻿<local:DocumentAction x:Class="SW_Utils.InsertPartIntoPart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SW_Utils"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="350">
+    <TreeViewItem.Header>
+        <CheckBox Content="Insert Part Into Part" IsChecked="True" x:Name="cbAction"/>
+    </TreeViewItem.Header>
+
+    <StackPanel x:Name="stpDetails" Orientation="Horizontal">
+        <TextBlock x:Name="txtInsertationSubject"/>
+        <TextBlock FontFamily="Wingdings 3" Text=" _ " VerticalAlignment="Bottom"/>
+        <TextBlock x:Name="txtInsertationTarget"/>
+    </StackPanel>
+</local:DocumentAction>

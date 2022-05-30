@@ -1,0 +1,54 @@
+Don't use
+
+# pound
+
+% percent
+
+& ampersand
+
+{ left curly bracket
+
+} right curly bracket
+
+\ back slash
+
+< left angle bracket
+
+> right angle bracket
+
+* asterisk
+
+? question mark
+
+/ forward slash
+
+  blank spaces
+
+$ dollar sign
+
+! exclamation point
+
+' single quotes
+
+" double quotes
+
+: colon
+
+@ at sign
+
++ plus sign
+
+` backtick
+
+| pipe
+
+= equal sign
+
+Also, keep these rules in mind.
+
+Don’t start or end your filename with a space, period, hyphen, or underline.
+Keep your filenames to a reasonable length and be sure they are under 31 characters.
+Most operating systems are case sensitive; always use lowercase.
+Avoid using spaces and underscores; use a hyphen instead.
+
+https://www.mtu.edu/umc/services/digital/writing/characters-avoid/
