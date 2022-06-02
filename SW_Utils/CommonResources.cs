@@ -355,7 +355,7 @@ namespace SW_Utils
                 {
                     if (isFile)
                     {
-                        var dirPrefix = GetFullPrefixFromPath(dirPath);
+                        var dirPrefix = parentPrefix.IsNullOrEmpty() ? GetFullPrefixFromPath(dirPath) : parentPrefix;
                         numList = GetNumberingFromName(dirPrefix, AddInSettings.SEP_FILE_NUMERATION);
                     }
                     numList.Add(AddInSettings.SEQUENCE_START);
