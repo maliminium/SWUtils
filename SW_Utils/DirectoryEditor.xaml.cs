@@ -177,14 +177,28 @@ namespace SW_Utils
 
         private void DirPicker_Selected(object UIcontrol)
         {
-            //deselect previously selected picker
-            if (SelectedPickerIdx > -1 && SelectedPickerIdx < pickerDirectories.Count)
-                pickerDirectories[SelectedPickerIdx].IsSelected = false;
-
-            //update selected picker
             var selectedControl = UIcontrol as PickerDirectory;
-            SelectedPickerIdx = pickerDirectories.IndexOf(selectedControl);
+            int newIdx = pickerDirectories.IndexOf(selectedControl);
+
+            if(newIdx!=SelectedPickerIdx)
+            {
+                //deselect previously selected picker
+                if (SelectedPickerIdx > -1 && SelectedPickerIdx < pickerDirectories.Count)
+                    pickerDirectories[SelectedPickerIdx].IsSelected = false;
+
+                //update selected picker
+                SelectedPickerIdx = newIdx;
+            }
             SelectedPath = selectedControl.GetSelectedPath();
+
+            ////deselect previously selected picker
+            //if (SelectedPickerIdx > -1 && SelectedPickerIdx < pickerDirectories.Count)
+            //    pickerDirectories[SelectedPickerIdx].IsSelected = false;
+
+            ////update selected picker
+            //var selectedControl = UIcontrol as PickerDirectory;
+            //SelectedPickerIdx = pickerDirectories.IndexOf(selectedControl);
+            //SelectedPath = selectedControl.GetSelectedPath();
         }        
         private void DirPicker_SubPathRequested(object UIcontrol)
         {
