@@ -208,10 +208,16 @@ namespace SW_Utils
         {
             //SetDirectory(SelectedPath);
             //Logger.Log("Path Refreshed " + SelectedPath, MessageTypeEnum.Information);
-
-            var activeDir = Path.GetDirectoryName(SolidWorksEnvironment.Application.ActiveModel.FilePath);
-            SetDirectory(activeDir);
-            Logger.Log("Path Refreshed with Active Dir " + activeDir, MessageTypeEnum.Information);
+            try
+            {
+                var activeDir = Path.GetDirectoryName(SolidWorksEnvironment.Application.ActiveModel.FilePath);
+                SetDirectory(activeDir);
+                Logger.Log("Path Refreshed with Active Dir " + activeDir, MessageTypeEnum.Information);
+            }
+            catch(System.Exception ex)
+            {
+                Logger.LogException(ex);
+            }
         }
         private void btnPrev_Click(object sender, RoutedEventArgs e) => DirectoryIndex--;
         private void btnNext_Click(object sender, RoutedEventArgs e) => DirectoryIndex++;

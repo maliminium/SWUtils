@@ -105,10 +105,6 @@ namespace SW_Utils
         {
             if (cbAction.IsChecked == true)
             {
-                //var assemDoc = ControlAssem == null ? (AssemblyDoc)AssemModel.UnsafeObject : (AssemblyDoc)ControlAssem.GetModel();
-
-                //var assemDoc = ControlAssem == null ? (AssemblyDoc)AssemModel : (AssemblyDoc)ControlAssem.GetModel();
-
                 var modelDoc = ControlAssem == null ? AssemModel : ControlAssem.GetModel();
                 var assemDoc = (AssemblyDoc)modelDoc;
 
@@ -123,50 +119,14 @@ namespace SW_Utils
                     assemDoc.AddComponents3(compNames, null, compCoordSysNames);
                     if (firstComponent)
                     {
-                        //AssemblyDoc swAssy = (AssemblyDoc)AssemModel;
-                        //ModelDocExtension swModelDocExt = modelDoc.Extension;
-                        //SelectionMgr swSelMgr = (SelectionMgr)modelDoc.SelectionManager;
-
-                        //swModelDocExt.SelectAll();
                         modelDoc.Extension.SelectAll();
                         assemDoc.FixComponent();
-
-                        //string compName = Path.GetFileNameWithoutExtension(solidPath) + "-1@" + Path.GetFileNameWithoutExtension(modelDoc.GetPathName());
-
-                        // Fix the selected component
-                        //bool status = swModelDocExt.SelectByID2("Pad_1-1@key pad_1", "COMPONENT", 0, 0, 0, false, 0, null, 0);
-                        //swAssy.FixComponent();
-
-
-
-                        //ModelDoc2 swModel;
-                        //AssemblyDoc swAssy;
-                        //ModelDocExtension swModelDocExt;
-                        //Component2 swComp;
-                        //SelectionMgr swSelMgr;
-                        //string fileName;
-                        //int errors = 0;
-                        //int warnings = 0;
-                        //bool status;
-
-                        //fileName = "C:\\Users\\Public\\Documents\\SOLIDWORKS\\SOLIDWORKS 2018\\samples\\tutorial\\api\\key pad_1.sldasm";
-                        //swModel = (ModelDoc2)swApp.OpenDoc6(fileName, (int)swDocumentTypes_e.swDocASSEMBLY, (int)swOpenDocOptions_e.swOpenDocOptions_Silent, "", ref errors, ref warnings);
-                        //swAssy = (AssemblyDoc)swModel;
-                        //swModelDocExt = (ModelDocExtension)swModel.Extension;
-                        //swSelMgr = (SelectionMgr)swModel.SelectionManager;
-
-                        //// Fix the selected component
-                        //status = swModelDocExt.SelectByID2("Pad_1-1@key pad_1", "COMPONENT", 0, 0, 0, false, 0, null, 0);
-                        //swAssy.FixComponent();
-                        //status = swModelDocExt.SelectByID2("Pad_1-1@key pad_1", "COMPONENT", 0, 0, 0, false, 0, null, 0);
-                        //swComp = swSelMgr.GetSelectedObjectsComponent3(1, -1);
-                        //Debug.Print("Selected component fixed? " + swComp.IsFixed());
-
-
-
-
-                        //assemDoc.FixComponent();
                     }
+                    int err = 0;
+                    int war = 0;
+                    modelDoc.Save3((int)SolidWorks.Interop.swconst.swSaveAsOptions_e.swSaveAsOptions_Silent, ref err, ref war) ;
+                    //TODO: may be save op result can be logged or this save op can be cancelled for good
+
                 }
                 else
                 {

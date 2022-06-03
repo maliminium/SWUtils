@@ -78,8 +78,7 @@ namespace SW_Utils
             var materialText = modelFile.GetCustomProperty(UI_Properties.CP_DftMaterial, modelFile.ActiveConfiguration.UnsafeObject.Name);
             edMaterial.Value = CommonResources.GetMaterialFromText(materialText);
         }
-
-        
+                
 
         private void SetTheControls()
         {
