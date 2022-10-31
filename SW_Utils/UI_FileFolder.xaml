@@ -52,7 +52,10 @@
                 <Button Width="{StaticResource ButtonWidth}" VerticalAlignment="Center" Margin="{StaticResource ButonMargin}" x:Name="btnDrawingClone" Content="Clone" Click="btnDrawingClone_Click"/>
                 <Button Width="{StaticResource ButtonWidth}" VerticalAlignment="Center" Margin="{StaticResource ButonMargin}" x:Name="btnDrawingNext" Content="Next" Click="btnDrawingNext_Click" Background="{StaticResource Alt_Background}"/>
             </StackPanel>
-            <CheckBox Content=".STL Twin?" x:Name="cbHasSTLConjugate" Margin="0 6 0 0" Checked="cbHasSTLConjugate_Checked" Unchecked="cbHasSTLConjugate_Unchecked"/>
+            <StackPanel Orientation="Horizontal" x:Name="stpUtils">
+                <CheckBox Content=".STL Twin?" x:Name="cbHasSTLConjugate" Margin="0 6 0 0" Checked="cbHasSTLConjugate_Checked" Unchecked="cbHasSTLConjugate_Unchecked"/>
+                <Button Content=" Set Default Props " Margin="10 0 0 0"  x:Name="btnDeftProps" Click="btnDeftProps_Click"/>
+            </StackPanel>
             <!--<Grid Margin="0 5 0 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>

@@ -263,58 +263,65 @@ namespace SW_Utils
         public ComponentItem(Model motherModel, bool includeDrawings)
         {
             InitializeComponent();
-            SourcePath = motherModel.FilePath;
-
-            if (motherModel.IsDrawing)
+            try
             {
-                try
+                SourcePath = motherModel.FilePath;
+                if (motherModel.IsDrawing)
                 {
-                    var swDrawDoc = ((DrawingDoc)motherModel.UnsafeObject);
-                    var sheets = (object[])swDrawDoc.GetViews();
-                    var views = new List<View>();
-                    for (int i = 0; i < sheets.Length; i++)
+                    try
                     {
-                        var nextView_arr = (object[])sheets[i];
-                        if(nextView_arr.Length>1)
+                        var swDrawDoc = ((DrawingDoc)motherModel.UnsafeObject);
+                        var sheets = (object[])swDrawDoc.GetViews();
+                        var views = new List<View>();
+                        for (int i = 0; i < sheets.Length; i++)
                         {
-                            for (int j = 1; j < nextView_arr.Length; j++)
+                            var nextView_arr = (object[])sheets[i];
+                            if (nextView_arr.Length > 1)
                             {
-                                views.Add((View)nextView_arr[j]);
+                                for (int j = 1; j < nextView_arr.Length; j++)
+                                {
+                                    views.Add((View)nextView_arr[j]);
+                                }
                             }
                         }
+                        for (int i = 0; i < views.Count; i++)
+                        {
+                            //Items.Add(new ComponentItem(views[i].ReferencedDocument, includeDrawings));
+                            AddItem(new ComponentItem(views[i].ReferencedDocument, includeDrawings));
+                        }
                     }
-                    for (int i = 0; i < views.Count; i++)
+                    catch (System.Exception ex)
                     {
-                        //Items.Add(new ComponentItem(views[i].ReferencedDocument, includeDrawings));
-                        AddItem(new ComponentItem(views[i].ReferencedDocument, includeDrawings));
+                        Logger.LogException(ex);
                     }
                 }
-                catch (System.Exception ex)
+                else
                 {
-                    Logger.LogException(ex);
-                }
-            }
-            else
-            {
-                var children = GetComponents(motherModel.UnsafeObject.FirstFeature(), includeDrawings);
-                for (int i = 0; i < children.Count; i++)
-                {
-                    //Items.Add(children[i]);
-                    AddItem(children[i]);
-                }
+                    var children = GetComponents(motherModel.UnsafeObject.FirstFeature(), includeDrawings);
+                    for (int i = 0; i < children.Count; i++)
+                    {
+                        //Items.Add(children[i]);
+                        AddItem(children[i]);
+                    }
 
-                if (includeDrawings)
-                {
-                    var drawingPath = GetDrawingPath(SourcePath);
-                    if (File.Exists(drawingPath))
+                    if (includeDrawings)
                     {
-                        //Items.Add(new ComponentItem(drawingPath));
-                        AddItem(new ComponentItem(drawingPath));
+                        var drawingPath = GetDrawingPath(SourcePath);
+                        if (File.Exists(drawingPath))
+                        {
+                            //Items.Add(new ComponentItem(drawingPath));
+                            AddItem(new ComponentItem(drawingPath));
+                        }
+
                     }
-                        
                 }
+                SetTheControls();
             }
-            SetTheControls();
+            catch (System.Exception ex)
+            {
+                Logger.LogException(ex);
+                Logger.Log("Problem with model file path");
+            }
         }
 
         public ComponentItem(ModelDoc2 motherModelDoc, bool includeDrawings)

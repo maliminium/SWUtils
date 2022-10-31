@@ -521,6 +521,18 @@ namespace SW_Utils
             }
         }
 
+        private void btnDeftProps_Click(object sender, RoutedEventArgs e)
+        {
+            if (model != null)
+            {
+                MessageBoxResult r = MessageBox.Show("This will override properties of the model.\nAre sure to continue?", "Warning", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+                if (r == MessageBoxResult.OK)
+                {
+                    UI_Properties.RecreateDefaultProps(model);
+                }
+            }
+        }
+
 
 
 
