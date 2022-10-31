@@ -4,7 +4,7 @@
 It is an AddIn for SolidWorks to automate the everyday activities of users.
 
 ## How is it possible?
-Because of the great work here:  
+Thanks to the great work here:  
 https://github.com/angelsix/solidworks-api
 
 ## How is it used?
