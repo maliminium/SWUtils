@@ -141,7 +141,7 @@ namespace SW_Utils
             var correspondingIdx = -1;
 
 
-            //TODO: .../15 yerine .../1'i seciyor
+            //TODO: .../15 yerine .../1'i seciyor -> DUZELTILDI
             for (int i = 0; i < cmbValue.Items.Count; i++)
             {
                 var nextPath = (cmbValue.Items[i] as PathData).Txt_Path;
@@ -153,7 +153,17 @@ namespace SW_Utils
             }
             if (correspondingIdx<0)
             {
-                for (int i = 0; i < cmbValue.Items.Count; i++)
+                //for (int i = 0; i < cmbValue.Items.Count; i++)
+                //{
+                //    var nextPath = (cmbValue.Items[i] as PathData).Txt_Path;
+                //    if (modelPath.StartsWith(nextPath))
+                //    {
+                //        correspondingIdx = i;
+                //        //onlem deneme
+                //        //break;
+                //    }
+                //}
+                for (int i = (cmbValue.Items.Count - 1); i > -1; i--)
                 {
                     var nextPath = (cmbValue.Items[i] as PathData).Txt_Path;
                     if (modelPath.StartsWith(nextPath))
