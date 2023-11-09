@@ -233,42 +233,60 @@ namespace SW_Utils
        
         public override void ExecuteAction()
         {
-            if (cbAction.IsChecked == true)
+            try
             {
-                if (targetNames != null)
+                if (cbAction.IsChecked == true)
                 {
-                    if (RefreshFlag)
+                    if (targetNames != null)
                     {
-                        RefreshTargetInfo();
-                        Logger.Log("TargetInfo is refreshed before Pack and Go", MessageTypeEnum.Information);
-                    }   
-                    var setSuccesful = PackAndGoElement.SetDocumentSaveToNames(targetNames);
-                    if (!setSuccesful)
-                        Logger.Log("Problem in (SetDocumentSaveToNames)", MessageTypeEnum.Error);
-
-                    var results = (int[])MotherModel.UnsafeObject.Extension.SavePackAndGo(PackAndGoElement);
-                    var faultyResults = new List<int>();
-                    for (int i = 0; i < results.Length; i++)
-                    {
-                        if ((swPackAndGoSaveStatus_e)results[i] != swPackAndGoSaveStatus_e.swPackAndGoSaveStatus_Succeed)
-                            faultyResults.Add(i);
-                    }
-                    if (faultyResults.Count > 0)
-                    {
-                        for (int i = 0; i < faultyResults.Count; i++)
+                        if (RefreshFlag)
                         {
-                            Logger.Log($"{(swPackAndGoSaveStatus_e)results[faultyResults[i]]} for {targetNames[i]}", MessageTypeEnum.Error);
+                            RefreshTargetInfo();
+                            Logger.Log("TargetInfo is refreshed before Pack and Go", MessageTypeEnum.Information);
+                        }
+                        var setSuccesful = PackAndGoElement.SetDocumentSaveToNames(targetNames);
+
+                        //TODO: Virtual components packandgo attempt cause .SetDocumentSaveToNames not work
+                        //object fileNamesObj;
+                        //object docStatsObj;
+                        //PackAndGoElement.GetDocumentSaveToNames(out fileNamesObj, out docStatsObj);
+                        //var fileNamesArr = (object[])fileNamesObj;
+
+                        if (setSuccesful)
+                        {
+                            var results = (int[])MotherModel.UnsafeObject.Extension.SavePackAndGo(PackAndGoElement);
+                            var faultyResults = new List<int>();
+                            for (int i = 0; i < results.Length; i++)
+                            {
+                                if ((swPackAndGoSaveStatus_e)results[i] != swPackAndGoSaveStatus_e.swPackAndGoSaveStatus_Succeed)
+                                    faultyResults.Add(i);
+                            }
+                            if (faultyResults.Count > 0)
+                            {
+                                for (int i = 0; i < faultyResults.Count; i++)
+                                {
+                                    Logger.Log($"{(swPackAndGoSaveStatus_e)results[faultyResults[i]]} for {targetNames[i]}", MessageTypeEnum.Error);
+                                }
+                            }
+                            else
+                            {
+                                Logger.Log($"Pack and Go succesful", MessageTypeEnum.Information);
+                            }
+                        }
+                        else
+                        {
+                            Logger.Log("Problem in SetDocumentSaveToNames(). Pack and Go is cancelled", MessageTypeEnum.Error);
                         }
                     }
                     else
                     {
-                        Logger.Log($"Pack and Go succesful", MessageTypeEnum.Information);
+                        Logger.Log("targetNames[] = null", MessageTypeEnum.Error);
                     }
                 }
-                else
-                {
-                    Logger.Log("targetNames[] = null", MessageTypeEnum.Error);
-                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log("(in ExecuteAction) " + ex.Message, MessageTypeEnum.Error);
             }
         }
 
