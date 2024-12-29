@@ -13,11 +13,11 @@
             <RowDefinition Height="5"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TabControl Grid.Row="0" x:Name="tcMain">
+        <!--<TabControl Grid.Row="0" x:Name="tcMain">
             <TabItem Header="File/Folder">
                 <local:UI_FileFolder/>
             </TabItem>
-            <!--<TabItem Header="Notes">
+            --><!--<TabItem Header="Notes">
                 <local:UI_Notes/>
             </TabItem>-->
             <!--<TabItem Header="Properties">
@@ -28,7 +28,7 @@
             </TabItem>
             <TabItem Header="Design Table">
                 <local:UI_DesignTable/>
-            </TabItem>-->
+            </TabItem>--><!--
             <TabItem Header="Dummy">
                 <StackPanel>
                     <TextBlock Text="Project" Margin="0 2 0 5"/>
@@ -44,7 +44,8 @@
                     <Button Content="Dummy" x:Name="btnDummy" Click="btnDummy_Click"/>
                 </StackPanel>
             </TabItem>
-        </TabControl>
+        </TabControl>-->
+        <local:UI_FileFolder/>
         <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
         <local:UI_Logger Grid.Row="2"/>
     </Grid>
